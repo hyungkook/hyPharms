@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>(주)화영약품</title>
+	<link rel="stylesheet" href="../css/admin.css" type="text/css"/>
+    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="../css/ie7.css" /><![endif]-->
+    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="../css/ie8.css" /><![endif]-->
+    <!--[if IE 9]><link rel="stylesheet" type="text/css" href="../css/ie9.css" /><![endif]-->
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="application/javascript">
+        var boardSeq = location.search.split('boardSeq=')[1];
+        $(document).ready(function() {
+            var url = targetUrl + 'board/getBoard?boardSeq='+boardSeq;
+            var object;
+            $.ajax({
+                url : url,
+                type : 'GET',
+                contentType: 'application/json',
+                dataType: 'json'
+            })
+            .success(function(datas){
+                $('#title').val(datas.email);
+                $('#content').val(datas.content);
+                $('#imageHidden').val(datas.title);
+                var imageHtml = '<img src="' + datas.title + '" >';
+                $('#viewimage').append(imageHtml);
+            });
+
+        });
+        function deleteBoard(){
+            if( confirm('정말 삭제하시겠습니까?') ){
+                var deleteUrl = targetUrl + 'board/deleteBoard?boardSeq='+boardSeq;
+                $.ajax({
+                    url : deleteUrl,
+                    type : 'GET',
+                    contentType: 'application/json',
+                    dataType: 'json'
+                }).success(function(datas){
+                    location.href = 'list.html';
+                });
+            }
+        }
+        function editBoard(){
+            var viewType = 'edit';
+            var url = targetUrl + 'board/saveBoard?viewType='+viewType+ '&boardSeq=' + boardSeq;
+
+            var sUploadURL= 'http://14.63.174.249:8280/allpetapi/v1/' +  'multiplePhotoUpload'; 	//upload URL
+
+            var fileName = $('input[type=file]').val().split('\\').pop();
+
+            var fileUrl = '';
+            if( fileName == null || fileName == ''){
+                var data = {
+                    boardType : '01',
+                    email : $('#title').val(),
+                    title : $('#imageHidden').val(),
+                    content : $('#content').val(),
+                    ssid : ssid
+                };
+                $.ajax({
+                    url : url,
+                    type : 'POST',
+                    data : JSON.stringify(data),
+                    contentType: 'application/json',
+                    dataType: 'json'
+                })
+                .success(function(datas){
+                    location.href = 'list.html';
+                })
+                .error(function(datass){
+                    alert('저장에 실패하였습니다.');
+                });
+            }else{
+                fileName = 'temp.jpg';
+                var fileSize = document.getElementById("imageFile").files[0].size;
+                $.ajax({
+                    type:"POST",
+                    beforeSend: function (request)
+                    {
+                        request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                        request.setRequestHeader("file-name", fileName);
+                        request.setRequestHeader("file-size", fileSize);
+                    },
+                    url: sUploadURL,
+                    data: document.getElementById("imageFile").files[0],
+                    processData: false,
+                    success: function(msg) {
+                        if( msg != ''){
+                            var tempUrl = msg.split('sFileURL=');
+                            fileUrl = tempUrl[1];
+
+                            var data = {
+                                boardType : '01',
+                                email : $('#title').val(),
+                                title : fileUrl,
+                                content : $('#content').val(),
+                                ssid : ssid
+                            };
+                            $.ajax({
+                                url : url,
+                                type : 'POST',
+                                data : JSON.stringify(data),
+                                contentType: 'application/json',
+                                dataType: 'json'
+                            })
+                                    .success(function(datas){
+                                        location.href = 'list.html';
+                                    })
+                                    .error(function(datass){
+                                        alert('저장에 실패하였습니다.');
+                                    });
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+    
+    <!------------------------------------------------- header start ------------------------------------------------->
+    <div id="header">
+    	<h1><a href="../index.html"><img src="../images/h1_logo.gif" /></a></h1>
+    </div>
+    <!------------------------------------------------- //header end  ------------------------------------------------->
+    
+    <!------------------------------------------------- container start ------------------------------------------------->
+    <div id="container">
+
+        <!----------------------- lnbwrap start ----------------------->
+        <div id="lnbwrap">
+            <h2>관리자 페이지</h2>
+            <div class="lnb">
+                <ul>
+                    <li><a href="list.html" class="on">제품관리</a></li>
+                </ul>
+            </div>
+        </div>
+        <!----------------------- //lnbwrap end ----------------------->
+
+        <!----------------------- contents start ----------------------->
+        <div id="contents">
+
+            <!-- cont_top start -->
+            <div class="cont_top">
+                <h3>제품관리</h3>
+                <div class="nav">
+                    <a href="list.html">관리자 페이지</a> >
+                    <span>제품관리</span> >
+                    <span>글 조회</span>
+                </div>
+            </div>
+            <!-- cont_top end -->
+
+            <!-- section 여기부터 내용 start ---------------------------------------------------------------------->
+            <div class="section">
+                <!-- table_list start -->
+                <table cellpadding="0" border="0" cellspacing="0" class="table_edit" >
+                    <colgroup>
+                        <col width="150px" /><col width="*" />
+                    </colgroup>
+                    <tr>
+                        <th>제품이름</th>
+                        <td><input type="text" id="title" class="input01" style="width:95%;"  value=""/></td>
+                    </tr>
+                    <tr>
+                        <th>제품 이미지</th>
+                        <td id="viewimage">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>제품 이미지 수정</th>
+                        <td>
+                            <form id="imageFileForm" name="imageFileForm" >
+                                <input type="file" class="file01" id="imageFile"/>
+                                <input type="hidden" class="file01" id="imageHidden"/>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>제품 설명</th>
+                        <td><textarea id="content" class="textarea01" style="width:95%; height:200px;"></textarea></td>
+                    </tr>
+                </table>
+                <div class="btn_area_c">
+                    <a href="#" class="btn_orange_b" style="width:185px;" onclick="editBoard()">수정</a>
+                    <a href="#" class="btn_gray_b" style="width:185px;" onclick="deleteBoard()">삭제</a>
+                    <a href="list.html" class="btn_yellow_b" style="width:185px;">목록</a>
+                </div>
+
+                
+                
+            </div>
+            <!-- //section 여기부터 내용 end ---------------------------------------------------------------------->
+
+        </div>
+        <!----------------------- //contents end ----------------------->
+        
+    </div>
+    <!------------------------------------------------- //container end  ------------------------------------------------->
+    
+    <!------------------------------------------------- footer start ------------------------------------------------->
+        <div id="footer">Copyright © ALLPET Inc. All Rights Reserved.</div>
+    <!------------------------------------------------- //footer end  ------------------------------------------------->
+    
+    
+    
+   
+</div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* 占썬끇彛륅옙紐낅？ 揶쏉옙以�占쎈챶以�*/
+@media only screen and (max-width : 600px) {
+	#sub .sub_ov > ul > li .sub_main1 .wee li{
+	line-height: 26px;
+	font-size:12px;
+	margin-left: 20px !important;
+	}
+	#sub .sub_ov > ul > li .sub_main1 .wee1 div ul{
+		padding:20px 0;
+	}
+	html,body{
+		min-height:100%;
+	}
+		
+	#main{
+		width:100%;
+		height:95%;
+		min-height: 500px;
+	}
+	#main #main_visual{
+		width:100%;
+		height:100%;
+		min-height:100%;
+	}
+	.main_v_roll li.vi_0{
+	background:url(../images/mm01.jpg) no-repeat center center;
+	background-size: cover;
+	 }
+	.main_v_roll li.vi_1{
+		background:url(../images/mm02.jpg) no-repeat center center;
+		background-size: cover;
+	 }
+	.main_v_roll li.vi_2{
+		background:url(../images/mm03.jpg) no-repeat center center;
+		background-size: cover;
+	 }
+	.main_v_roll li.vi_3{
+		background:url(../images/mm04.jpg) no-repeat center center;
+		background-size: cover;
+	 }
+ 
+	.main_v_roll li div p,
+	.main_v_roll li div h2{
+		width:100%;
+		text-align: center;
+	}
+	.main_v_roll li div h2{
+		padding-top: 20px; 
+		font-size:32px;
+	 }
+	.main_v_roll li div p{
+		font-size:22px;
+		padding-top:10px;
+		line-height: 25px;
+	}
+	.main_v_roll li div p.txt01{
+	font-size:30px;
+	line-height:120%;
+	}
+	
+	#main #main_visual .play{
+		width:15px;
+		height:15px;
+		margin-right:10px;
+	}
+	#main #main_visual .dotted_btn{
+		width: 112px;
+		margin-left:-56px;
+	}
+	#main #main_visual .dotted li{
+		width: 15px;
+		height:15px;
+		border-radius: 7.5px;
+		margin-right: 8px;
+	}
+	#main #sub_visual{
+		display: none;
+	}
+
+
+	.down_btn{
+		padding: 5px;
+		display: inline-block;
+		border: 1px solid #ED1F24;
+		border-radius: 5px;
+		font-size: 0.6em;
+		font-weight: 600;
+		position: absolute;
+		top: -40px;
+		right: 0;
+		cursor: pointer;
+		margin-left: -90px;
+		width: 140px;
+		height: 16px;
+	}
+	#footer{
+		height:5%;
+		min-height: 25px;
+	}
+	#footer .f_pc{ display:none;}
+	#footer .f_mo{ display:block;}	
+	
+	#main #sub_visual .visual_sub li .s_hover p br{
+		display: none;
+	}
+		.pc_ie9{
+		color: #933; 
+		margin-top:-10px;
+		font-size: 12px;
+		line-height: 20px;
+		font-weight: 600;
+	}
+
+}
+
+
+/* 揶쎼끇��옙�쀪틙+iPad 揶쏉옙以�占쎈챶以�*/
+@media only screen and (min-width : 601px) and (max-width : 1023px) {
+	html, body{
+		min-height: 1000px;
+	}
+	#main #main_visual{
+		min-height: 665px;
+	}
+	.main_v_roll li div{
+		margin-top:-85px;
+	}
+	.main_v_roll li div p,
+	.main_v_roll li div h2{
+		width:100%;
+		text-align: center;
+	}
+	.main_v_roll li div h2 img{
+		width: 50%;
+	}
+	.main_v_roll li div p{
+		font-size: 1.5em;
+		padding-top: 25px; 
+	}
+	#main #sub_visual{
+		width:100%;
+		height: 30%;
+		min-height: 285px;
+	}
+	#main #sub_visual .visual_sub{
+		width:100%;
+		height: 100%;
+	}
+	#main #sub_visual .visual_sub li{
+		float: left;
+		width: 33%;
+		height: 100%;
+	}
+	#main #sub_visual .visual_sub li.s_vi_1{
+		width: 34%;
+	}
+
+
+
+
+
+	
+	
+	
+	
+	
+}
+
+/* 占쎄퀣�わ옙�源��됰슢�わ옙怨쀯옙 揶쏉옙以�*/
+@media only screen and (min-width : 1024px) {
+	html, body{
+		min-height: 1000px;
+	}
+	#main #main_visual{
+		min-height: 665px;
+	}
+	.main_v_roll li div{
+		margin-top:-85px;
+	}
+	.main_v_roll li div p,
+	.main_v_roll li div h2{
+		width:100%;
+		text-align: center;
+	}
+	.main_v_roll li div h2 img{
+		width: 50%;
+	}
+	#main #sub_visual{
+		width:100%;
+		height: 30%;
+		min-height: 285px;
+	}
+	#main #sub_visual .visual_sub{
+		width:100%;
+		height: 100%;
+	}
+	#main #sub_visual .visual_sub li{
+		float: left;
+		width: 33%;
+		height: 100%;
+	}
+	#main #sub_visual .visual_sub li.s_vi_1{
+		width: 34%;
+	}
+
+}
+
+
+
+

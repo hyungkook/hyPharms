@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>(주)화영약품</title>
+	<link rel="stylesheet" href="../css/admin.css" type="text/css"/>
+    <!--[if IE 8]><link rel="stylesheet" type="text/css" href="../css/ie8.css" /><![endif]-->
+    <!--[if IE 9]><link rel="stylesheet" type="text/css" href="../css/ie9.css" /><![endif]-->
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="application/javascript">
+        $(document).ready(function() {
+            var url = targetUrl + 'board/boardList?ssid='+ssid+ '&boardType=01&pageNum=' + 1;
+            var object;
+            $.ajax({
+                url : url,
+                type : 'GET',
+                contentType: 'application/json',
+                dataType: 'json'
+            })
+            .success(function(datas){
+                $.each(datas.list, function() {
+                    var listItem = '<tr>';
+                    if( this.title ){
+                        listItem += '<td><img width="150" height="80" src="'+this.title+'"></td>';
+                    }else{
+                        listItem += '<td></td>';
+                    }
+                    listItem += '<td class="cont" align="center" onclick="viewDetail(\''+this.boardSeq+'\')">'+this.email+'</td>';
+                    listItem += '<td>'+this.regDate+'</td>';
+                    listItem += '</tr>';
+                    $('#listData').append(listItem);
+                });
+            });
+
+        });
+
+        var viewDetail = function(boardSeq){
+            location.href = 'edit.html?boardSeq='+boardSeq;
+        }
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+    
+    <!------------------------------------------------- header start ------------------------------------------------->
+    <div id="header">
+    	<h1><a href="../index.html"><img src="../images/h1_logo.gif" /></a></h1>
+    </div>
+    <!------------------------------------------------- //header end  ------------------------------------------------->
+    
+    <!------------------------------------------------- container start ------------------------------------------------->
+    <div id="container">
+    
+    	<!----------------------- lnbwrap start ----------------------->
+    	<div id="lnbwrap">
+        	<h2>관리자 페이지</h2>
+            <div class="lnb">
+            	<ul>
+                	<li><a href="#" class="on">제품관리</a></li>
+                </ul>
+            </div>
+        </div>
+        <!----------------------- //lnbwrap end ----------------------->
+        
+        <!----------------------- contents start ----------------------->
+        <div id="contents">
+        
+        	<!-- cont_top start -->
+        	<div class="cont_top">
+            	<h3>제품관리</h3>
+                <div class="nav">
+                	<a href="#">관리자 페이지</a> >
+                    <span>제품관리</span>
+                </div>
+            </div>
+            <!-- cont_top end -->
+
+            <!-- section 여기부터 내용 start ---------------------------------------------------------------------->
+            <div class="section">
+            	<p class="btn_area_r"><a href="write.html" class="btn_blue">글쓰기</a></p>
+                <!-- table_list start -->
+                <table cellpadding="0" border="0" cellspacing="0" class="table_list mt10" id="listData">
+                    <colgroup>
+                        <col width="300px" /><col width="*" /><col width="80px" />
+                    </colgroup>
+                    <tr>
+                        <th>제품 이미지</th>
+                        <th>제품이름</th>
+                        <th>날짜</th>
+                    </tr>
+                </table>
+                <!--
+                <div class="paging mt40">
+                    <a href="#" class="btn"><img src="../images/btn_prev02.gif" /></a>
+                    <a href="#" class="btn01"><img src="../images/btn_prev01.gif" /></a>
+                    <a href="#" class="on">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">7</a>
+                    <a href="#">8</a>
+                    <a href="#">9</a>
+                    <a href="#" class="btn02"><img src="../images/btn_next01.gif" /></a>
+                    <a href="#" class="btn"><img src="../images/btn_next02.gif" /></a>
+                </div>
+                -->
+                <div class="list_search mt20">
+                    <select class="select01" style="width:120px;">
+                    <option value="">제품이름</option>
+                    </select>
+                    <input type="text" class="input01" style="width:300px;"  value="" />
+                    <a href="#" class="btn_search">SEARCH</a>
+                </div>
+                <!-- table_list01 end -->
+                
+            </div>
+            <!-- //section 여기부터 내용 end ---------------------------------------------------------------------->
+            
+            
+            
+            
+            
+        </div>
+        <!----------------------- //contents end ----------------------->
+        
+    </div>
+    <!------------------------------------------------- //container end  ------------------------------------------------->
+    
+    <!------------------------------------------------- footer start ------------------------------------------------->
+    <div id="footer">Copyright © ALLPET Inc. All Rights Reserved.</div>
+    <!------------------------------------------------- //footer end  ------------------------------------------------->
+    
+    
+    
+   
+</div>
+</body>
+</html>
