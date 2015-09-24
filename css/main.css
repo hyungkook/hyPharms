@@ -16,38 +16,38 @@
 #main #main_visual{
 	width:100%;
 	height:70%;
-	position:relative;
  }
-#main #main_visual .main_v_roll li div{
+#main #main_visual .visual_ov .visual li div{
 	position: absolute;
-	top:36%;
+	top:50%;
 	left:0;
 	width:100%;
 	margin-top: -40px; 
-	text-align:center;
  }
 
-#main #main_visual .main_v_roll { width: 100%; height:100%;}
-#main #main_visual .main_v_roll ul{ height:100%;}
-#main #main_visual .main_v_roll ul li{height:100%;}
-
-.main_v_roll li.vi_0{
+#main #main_visual .visual_ov .visual li div h2 img{
+	width: 100%;
+}
+#main #main_visual .visual_ov .visual li.vi_0{
 	background:url(../images/m01.jpg) no-repeat center center;
 	background-size: cover;
  }
-.main_v_roll li.vi_1{
+#main #main_visual .visual_ov .visual li.vi_1{
 	background:url(../images/m02.jpg) no-repeat center center;
 	background-size: cover;
  }
-.main_v_roll li.vi_2{
+#main #main_visual .visual_ov .visual li.vi_2{
 	background:url(../images/m03.jpg) no-repeat center center;
 	background-size: cover;
  }
-.main_v_roll li.vi_3{
+#main #main_visual .visual_ov .visual li.vi_3{
 	background:url(../images/m04.jpg) no-repeat center center;
 	background-size: cover;
  }
-
+#main #main_visual .visual_ov .visual li.vi_4{
+	background:url(../images/m05.jpg) no-repeat center center;
+	background-size: cover;
+ }
 
 
 #main #sub_visual .visual_sub li.s_vi_0{
@@ -116,32 +116,32 @@
 
 
 
-.main_v_roll li div h2{
+ #main #main_visual .visual_ov .visual li div h2{
 	padding: 0; 
 	font-size:46px; font-weight:bold;
 	color: #000000;
 	text-shadow: 0 0 4px rgba(255,255,255,0.5);
  }
-.main_v_roll li div p{
+#main #main_visual .visual_ov .visual li div p{
 	padding-top:20px; 
 	font-size:36px;
 	font-weight: 600;
 	color: #000000;
-	line-height:140%;
+	line-height: 30px;
 	text-shadow: 0 0 4px rgba(255,255,255,0.5);
 }
-.main_v_roll li div p.txt01{
+#main #main_visual .visual_ov .visual li div p.txt01{
 	padding-top:30px; 
 	font-size:46px;
 	font-weight: 600;
 	color: #fff;
-	line-height:140%;
+	line-height: 30px;
 	text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
 }
-.main_v_roll li div p.m_logo{padding-top:0; padding-bottom:0; margin-top:0;}
-.main_v_roll li div p.m_logo img{ max-width:60%;}
-.main_v_roll li div p img{ max-width:40%;}
-.main_v_roll li div .btn{ padding-top:30px; margin:0; font-size:0; line-height:0; }
+#main #main_visual .visual_ov .visual li div p.m_logo{padding-top:0; padding-bottom:0; margin-top:-30px;}
+#main #main_visual .visual_ov .visual li div p.m_logo img{ max-width:80%;}
+#main #main_visual .visual_ov .visual li div p img{ max-width:40%;}
+#main #main_visual .visual_ov .visual li div .btn{ padding-top:30px; margin:0; font-size:0; line-height:0; }
 
 
 
@@ -857,7 +857,3 @@
 	float: right;
 	
 }
-
-.bellet{ position:absolute; bottom:2%; text-align:center; left:0; right:0; text-align:center; z-index:99999; }
-.bellet a{ font-size:0; line-height:0; display:inline-block; width:11px; height:11px; border-radius:50%; background:#ccc; margin:0 4px;}
-.bellet a.on{ background:#F60;}

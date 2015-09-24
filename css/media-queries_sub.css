@@ -9,14 +9,6 @@
 
 .sub01{ width:1px; height:1px; position:absolute; top:-999px; left:-999px; overflow:hidden;}
 
-.product{margin-bottom:20px;}
-.product .p_tt{ font-size:14px; font-weight:600; height:26px; line-height:26px;}
-.product ul { padding:0 3%; margin:0; overflow:hidden; border:none; border-bottom:solid 1px #252525}
-.product ul li{ border-top:solid 1px #d8d8d8; padding:15px 0; overflow:hidden;}
-.product ul li .thum{ width:40%;}
-.product ul li .txt01{ width:55%; font-size:13px; line-height:140%; }
-
-
 
 #footer{height:5%; min-height: 25px;}
 #footer .f_pc{ display:none;}

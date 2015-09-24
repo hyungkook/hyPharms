@@ -14,6 +14,7 @@
     <script type="text/javascript">
         var boardSeq = location.search.split('boardSeq=')[1];
         $(document).ready(function() {
+            jQuery.support.cors = true;
             var url = targetUrl + 'board/getBoard?boardSeq='+boardSeq;
             var object;
             $.ajax({

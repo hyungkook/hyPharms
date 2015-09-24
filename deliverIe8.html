@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>(주)화영약품</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            jQuery.support.cors = true;
+            var url = targetUrl + 'board/boardList?ssid='+ssid+ '&boardType=01&pageNum=' + 1;
+            var object;
+            $.ajax({
+                url : url,
+                type : 'GET',
+                contentType: 'application/json',
+                dataType: 'json'
+            })
+            .success(function(datas){
+                $.each(datas.list, function(idx, b) {
+                    if( idx > 3 ){
+                        return;
+                    }
+                    var listItem = '<li>';
+                    if( this.title ){
+                        listItem += '<p class="thum"><img src="'+this.title+'" style="width:300px; height:150px"></p>';
+                    }else{
+                        listItem += '<p></p>';
+                    }
+                    listItem += '<p class="txt01">'+this.content+'</p>';
+                    listItem += '</li>';
+                    $('#listData').append(listItem);
+                });
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+	<div class="sub_visual02">
+    	<p class="s_logo"><a href="index.html"><img src="images/logo02.png" alt="(주)화영약품"></a></p>
+    </div>
+    <div id="menu">
+    	<ul>
+        	<li class="first"><a href="companyIe8.html">회사소개</a></li>
+            <li style="width:34%;"><a href="http://wos.hypharm.co.kr/" target="_blank">약품주문</a></li>
+            <li><a class="on" href="deliverIe8.html">제품/배송안내</a></li>
+        </ul>
+    </div>
+    
+    <div id="contents">
+    	<div class="sub01" style="padding-bottom:50px;"><img src="images/s_cont2.jpg" alt="#"></div>
+        <!-- 제품소개 시작-->
+        <div class="product">
+            <p class="p_tt">제품소개</p>
+            <ul id="listData">
+            </ul>
+        </div>
+        <!-- //제품소개 끝-->
+    </div>
+    
+    <div id="footer">
+    	<div class="f_pc">
+            <p class="add">주소:경기도 고양시 덕양구 토당동 855 능곡역프라자 B1&nbsp;&nbsp;&nbsp;Tel:031-938-0707&nbsp;&nbsp;&nbsp;Mail:<a href="mailto:bsbshj@hanmail.net">bsbshj@hanmail.net</a></p>
+            <p class="t01">COPYRIGHT 2015 BY(주)화영약품 ALL RIGHTS RESERVED<a href="admin/list.html" target="_blank">.</a></p>
+        </div>
+	</div>
+</div>
+</body>
+</html>

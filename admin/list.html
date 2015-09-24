@@ -12,6 +12,7 @@
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            jQuery.support.cors = true;
             var url = targetUrl + 'board/boardList?ssid='+ssid+ '&boardType=01&pageNum=' + 1;
             var object;
             $.ajax({
